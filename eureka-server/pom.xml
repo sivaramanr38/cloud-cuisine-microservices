@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Maven Project Object Model (POM) definition -->
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
+		<!-- Spring Boot starter parent provides default dependency versions and plugin configs -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.2</version>
+		<version>4.0.2</version> <!-- Spring Boot version (brings Spring Framework 6.1.6 internally) -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<!-- Project coordinates (unique identity in Maven repository) -->
 	<groupId>com.cloudcuisine</groupId>
 	<artifactId>eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eureka-server</name>
 	<description>Spring cloud discovery eureka server for cloud cuisine microservices</description>
+
+	<!-- Metadata (optional, useful for publishing) -->
 	<url/>
 	<licenses>
 		<license/>
@@ -26,30 +35,42 @@
 		<tag/>
 		<url/>
 	</scm>
+
 	<properties>
+		<!-- Java version used for compilation -->
 		<java.version>21</java.version>
+		<!-- Spring Cloud BOM version (manages cloud-related dependencies) -->
+		<!-- Spring Cloud BOM ensures all cloud modules across Spring Cloud ecosystem uses compatible versions with Spring Boot -->
 		<spring-cloud.version>2025.1.0</spring-cloud.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
+			<!-- Eureka Server dependency: enables service discovery in microservices -->
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
+		<!-- DevTools: enables hot reload during development -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Testing support (JUnit, Spring Test, etc.) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+
 	<dependencyManagement>
 		<dependencies>
+			<!-- Import Spring Cloud BOM (Bill of Materials) to align versions -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -62,6 +83,7 @@
 
 	<build>
 		<plugins>
+			<!-- Spring Boot Maven Plugin: allows running app with mvn spring-boot:run -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

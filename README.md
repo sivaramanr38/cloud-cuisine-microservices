@@ -8,6 +8,11 @@
 
 ## 📐 Architecture Overview
 
+### Infrastructure Services
+- **Service Registry (Eureka Server)** → Dynamic service discovery.
+- **API Gateway (Spring Cloud Gateway)** → Entry point, routing, JWT validation, logging.
+- **Config Server (GitHub-backed)** Spring Cloud Config Server??? → Centralized configuration management.
+
 ### Core Microservices
 - **Customer Service (PostgreSQL)** → Manages customer accounts, profiles, and authentication (JWT issuance).
 - **Restaurant Service (MongoDB)** → Handles restaurant details and menus.
@@ -15,10 +20,6 @@
 - **Delivery Service (MongoDB)** → Assigns delivery partners and tracks delivery status.
 - **Payment Service (PostgreSQL)** → Processes payments (mock initially, later real integration).
 
-### Infrastructure Services
-- **API Gateway (Spring Cloud Gateway)** → Entry point, routing, JWT validation, logging.
-- **Service Registry (Eureka Server)** → Dynamic service discovery.
-- **Config Server (GitHub-backed)** → Centralized configuration management.
 
 ### Supporting Tools
 - **Kafka / RabbitMQ** → Asynchronous communication (OrderPlaced, PaymentConfirmed events).
