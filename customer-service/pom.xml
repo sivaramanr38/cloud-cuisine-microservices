@@ -1,73 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Maven Project Object Model (POM) definition -->
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
+		<!-- Spring Boot starter parent:
+             Provides default dependency versions, plugin configurations, and sensible defaults.
+             This avoids manually specifying versions for common Spring Boot starters. -->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.3</version>
+		<version>4.0.3</version> <!-- Spring Boot version (internally aligns with Spring Framework 6.x) -->
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<!-- Project coordinates: uniquely identify this artifact in Maven repository -->
 	<groupId>com.cloudcuisine</groupId>
 	<artifactId>customer-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customer-service</name>
 	<description>Customer management service for Cloud Cuisine</description>
+
+	<!-- Metadata (optional, useful for publishing to Maven Central or internal repos) -->
 	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
+	<licenses><license/></licenses>
+	<developers><developer/></developers>
 	<scm>
 		<connection/>
 		<developerConnection/>
 		<tag/>
 		<url/>
 	</scm>
+
 	<properties>
+		<!-- Java version used for compilation (ensures compatibility with JDK 21 features) -->
 		<java.version>21</java.version>
+		<!-- Spring Cloud BOM version:
+             BOM = Bill of Materials, ensures all Spring Cloud modules use compatible versions.
+             This avoids version conflicts between Spring Boot and Spring Cloud dependencies. -->
 		<spring-cloud.version>2025.1.0</spring-cloud.version>
 	</properties>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+		<!-- Spring Web MVC starter:
+             Enables REST controllers, servlet-based request handling, and JSON serialization.
+             Used for building synchronous HTTP APIs. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
+
+		<!-- Spring Data JPA starter:
+             Provides Hibernate + JPA support for database persistence.
+             Simplifies repository creation and entity management. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Eureka Client:
+             Registers this microservice with the Eureka Server.
+             Enables service discovery so other services (like API Gateway) can find it dynamically. -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
+		<!-- Spring Boot DevTools:
+             Provides hot reload and automatic restart during development.
+             Improves developer productivity by reloading changes without manual restart. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- PostgreSQL JDBC driver:
+             Runtime dependency for connecting to PostgreSQL database.
+             Required for JPA/Hibernate to interact with the DB. -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- H2 Database: lightweight, in-memory DB for local development and testing -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- JPA Test starter:
+             Provides utilities for testing JPA repositories.
+             Includes embedded database support and transactional test setup. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Web MVC Test starter:
+             Provides utilities for testing controllers and REST endpoints.
+             Includes MockMvc for simulating HTTP requests in unit tests. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Spring Boot Test Starter:
+     	Includes JUnit 5 (testing framework), Mockito (mocking),
+     	AssertJ (fluent assertions), Hamcrest (matchers),
+     	and Spring Test utilities (MockMvc, TestRestTemplate). -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
+			<!-- Spring Cloud BOM import:
+                 Aligns versions of all Spring Cloud dependencies (Eureka, Gateway, Config, etc.).
+                 Ensures compatibility with the chosen Spring Boot version. -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -80,6 +141,9 @@
 
 	<build>
 		<plugins>
+			<!-- Spring Boot Maven Plugin:
+                 Provides goals like 'spring-boot:run' for running the app directly from Maven.
+                 Repackages the JAR with embedded Tomcat/Jetty so the service runs standalone. -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

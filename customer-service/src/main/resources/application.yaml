@@ -2,5 +2,36 @@ spring:
   application:
     name: customer-service
 
+  # H2 in-memory database configuration
+  datasource:
+    url: jdbc:h2:mem:customerdb # 'mem:' means in-memory DB
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: # empty password by default
+
+  # Enable H2 console (optional, for debugging via browser)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
 server:
   port: 8001
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+# This property is not commonly used in newer Spring Cloud versions.
+# Eureka discovery is enabled by default when the Eureka client dependency is present.
+# You can omit this unless you?re working with a specific setup that requires it.
+# spring:
+#   cloud:
+#     netflix:
+#       eureka:
+#         discovery:
+#           enabled=true
+
+

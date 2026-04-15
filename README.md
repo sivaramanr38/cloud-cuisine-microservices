@@ -19,7 +19,10 @@
 - **Order Service (PostgreSQL)** → Places and tracks orders, validates menu items.
 - **Delivery Service (MongoDB)** → Assigns delivery partners and tracks delivery status.
 - **Payment Service (PostgreSQL)** → Processes payments (mock initially, later real integration).
-
+- **GraphQL Aggregation Service (Spring Boot GraphQL API)** → Exposes a single /graphql endpoint.
+  - Aggregates data from Customer, Order, and Restaurant services. 
+  - Allows frontend clients to fetch exact fields (e.g., customer info + orders + menu items) in one query. 
+  - Simplifies client‑side data fetching and reduces multiple REST calls.
 
 ### Supporting Tools
 - **Kafka / RabbitMQ** → Asynchronous communication (OrderPlaced, PaymentConfirmed events).
