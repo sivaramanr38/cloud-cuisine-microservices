@@ -1,4 +1,4 @@
-package com.cloudcuisine.eureka_server;
+package com.cloudcuisine.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

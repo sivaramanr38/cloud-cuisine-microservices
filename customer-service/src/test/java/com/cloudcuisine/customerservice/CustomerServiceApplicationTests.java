@@ -1,4 +1,4 @@
-package com.cloudcuisine.customer_service;
+package com.cloudcuisine.customerservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

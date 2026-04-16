@@ -1,4 +1,4 @@
-package com.cloudcuisine.customer_service;
+package com.cloudcuisine.customerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
