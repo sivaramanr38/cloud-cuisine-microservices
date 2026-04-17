@@ -11,7 +11,7 @@
 ### Infrastructure Services
 - **Service Registry (Eureka Server)** → Dynamic service discovery.
 - **API Gateway (Spring Cloud Gateway)** → Entry point, routing, JWT validation, logging.
-- **Config Server (GitHub-backed)** Spring Cloud Config Server??? → Centralized configuration management.
+- **Config Server (GitHub-backed)** Spring Cloud Config Server → Centralized configuration management.
 
 ### Core Microservices
 - **Customer Service (PostgreSQL)** → Manages customer accounts, profiles, and authentication (JWT issuance).

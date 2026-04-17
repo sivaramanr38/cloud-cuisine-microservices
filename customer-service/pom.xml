@@ -53,6 +53,15 @@
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 
+		<!-- Web MVC Test starter:
+     		 Provides utilities for testing controllers and REST endpoints.
+     		 Includes MockMvc for simulating HTTP requests in unit tests. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webmvc-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Spring Data JPA starter:
              Provides Hibernate + JPA support for database persistence.
              Simplifies repository creation and entity management. -->
@@ -61,12 +70,29 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<!-- JPA Test starter:
+     		 Provides utilities for testing JPA repositories.
+     		 Includes embedded database support and transactional test setup. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- Eureka Client:
              Registers this microservice with the Eureka Server.
              Enables service discovery so other services (like API Gateway) can find it dynamically. -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- Spring Cloud Config Client:
+     		 Allows this microservice to fetch its configuration from the Config Server.
+     		 Supports centralized, Git-backed configuration management across environments (dev, prod, etc.). -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 
 		<!-- Spring Boot DevTools:
@@ -95,23 +121,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- JPA Test starter:
-             Provides utilities for testing JPA repositories.
-             Includes embedded database support and transactional test setup. -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
-		<!-- Web MVC Test starter:
-             Provides utilities for testing controllers and REST endpoints.
-             Includes MockMvc for simulating HTTP requests in unit tests. -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 		<!-- Spring Boot Test Starter:
      	Includes JUnit 5 (testing framework), Mockito (mocking),

@@ -3,6 +3,8 @@ spring:
     name: customer-service
   profiles:
     active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
 
 server:
   port: 8001
@@ -21,5 +23,3 @@ eureka:
 #       eureka:
 #         discovery:
 #           enabled=true
-
-
