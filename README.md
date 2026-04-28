@@ -14,7 +14,7 @@
 - **Config Server (GitHub-backed)** Spring Cloud Config Server → Centralized configuration management.
 
 ### Core Microservices
-- **Customer Service (PostgreSQL)** → Manages customer accounts, profiles, and authentication (JWT issuance).
+- **Customer Service (PostgreSQL 18.3)** → Manages customer accounts, profiles, and authentication (JWT issuance).
 - **Restaurant Service (MongoDB)** → Handles restaurant details and menus.
 - **Order Service (PostgreSQL)** → Places and tracks orders, validates menu items.
 - **Delivery Service (MongoDB)** → Assigns delivery partners and tracks delivery status.
