@@ -1,4 +1,4 @@
-package com.cloudcuisine.customerservice.controller.dto;
+package com.cloudcuisine.customerservice.dto;
 
 public class LoginRequestDto {
     private String email;

@@ -1,4 +1,4 @@
-package com.cloudcuisine.customerservice.controller.dto;
+package com.cloudcuisine.customerservice.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
