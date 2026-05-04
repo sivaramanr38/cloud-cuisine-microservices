@@ -15,6 +15,5 @@ public class AddressDto {
     private String city;
     private String postalCode;
     private String country;
-    private boolean isDefault;
     private String type;       // HOME / WORK
 }

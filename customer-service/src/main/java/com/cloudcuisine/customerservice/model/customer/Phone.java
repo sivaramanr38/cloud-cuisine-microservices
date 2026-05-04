@@ -24,5 +24,4 @@ public class Phone {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
 }

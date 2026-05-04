@@ -34,10 +34,4 @@ public class CustomerDto {
 
     private String refreshToken;    // Optional: store refresh token
     private LocalDateTime lastLogin;// Track last login time
-
-    public void setPhones(List<Phone> phones) {
-    }
-
-    public void setAddresses(List<Address> addresses) {
-    }
 }

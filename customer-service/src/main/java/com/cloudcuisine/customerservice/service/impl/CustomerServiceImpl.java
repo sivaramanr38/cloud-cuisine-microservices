@@ -8,17 +8,32 @@ import com.cloudcuisine.customerservice.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
+
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    @Override
+    public List<CustomerDto> getCustomers() {
+        List<Customer> customers = this.customerRepository.findAll();
+        return customers.stream()
+                        .map(CustomerMapper::mapToDto)
+                        .toList();
+    }
 
     @Override
     public CustomerDto createCustomer(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto);
         Customer saveCustomer = customerRepository.save(customer);
-        return CustomerMapper.customerToDto(saveCustomer);
+        return CustomerMapper.mapToDto(saveCustomer);
     }
 
 }
