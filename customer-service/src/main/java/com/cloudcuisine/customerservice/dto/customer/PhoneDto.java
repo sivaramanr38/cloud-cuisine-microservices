@@ -12,5 +12,5 @@ import lombok.Setter;
 public class PhoneDto {
     private Long id;
     private String type;     // MOBILE / HOME / WORK
-    private String phoneNumber;
+    private String number;
 }

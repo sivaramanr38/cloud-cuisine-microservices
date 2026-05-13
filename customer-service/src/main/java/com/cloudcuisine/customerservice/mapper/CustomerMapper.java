@@ -57,7 +57,7 @@ public class CustomerMapper {
                         Phone phone = new Phone();
                         phone.setId(phoneDto.getId());
                         phone.setType(phoneDto.getType());
-                        phone.setNumber(phoneDto.getPhoneNumber());
+                        phone.setNumber(phoneDto.getNumber());
                         phone.setCustomer(customer); // set back-reference
                         return phone;
                     })
@@ -75,6 +75,7 @@ public class CustomerMapper {
                         address.setPostalCode(addressDto.getPostalCode());
                         address.setCountry(addressDto.getCountry());
                         address.setCustomer(customer); // set back-reference
+                        address.setType(addressDto.getType());
                         return address;
                     })
                     .toList();
