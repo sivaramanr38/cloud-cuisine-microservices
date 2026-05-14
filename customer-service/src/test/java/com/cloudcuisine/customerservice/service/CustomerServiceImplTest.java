@@ -4,7 +4,9 @@ import com.cloudcuisine.customerservice.dto.customer.AddressDto;
 import com.cloudcuisine.customerservice.dto.customer.CustomerDto;
 import com.cloudcuisine.customerservice.dto.customer.PhoneDto;
 import com.cloudcuisine.customerservice.mapper.CustomerMapper;
+import com.cloudcuisine.customerservice.model.customer.Address;
 import com.cloudcuisine.customerservice.model.customer.Customer;
+import com.cloudcuisine.customerservice.model.customer.Phone;
 import com.cloudcuisine.customerservice.repository.CustomerRepository;
 import com.cloudcuisine.customerservice.service.impl.CustomerServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -28,6 +30,47 @@ public class CustomerServiceImplTest {
 
     @InjectMocks
     private CustomerServiceImpl customerService;
+
+    @Test
+    void shouldReturnCustomersWithPhonesAndAddresses() {
+        // Arrange: build Customer entity with phones and addresses
+        Customer customer = new Customer();
+        customer.setId(1L);
+        customer.setFirstName("Alice");
+        customer.setLastName("Smith");
+        customer.setEmail("alice@example.com");
+
+        Phone phone = new Phone();
+        phone.setId(1L);
+        phone.setType("mobile");
+        phone.setNumber("1234567890");
+        phone.setCustomer(customer);
+
+        Address address = new Address();
+        address.setId(1L);
+        address.setStreet("123 Main St");
+        address.setCity("Springfield");
+        address.setPostalCode("12345");
+        address.setCountry("USA");
+        address.setType("HOME");
+        address.setCustomer(customer);
+
+        customer.setPhones(List.of(phone));
+        customer.setAddresses(List.of(address));
+
+        when(customerRepository.findAll()).thenReturn(List.of(customer));
+
+        // Act
+        List<CustomerDto> result = customerService.getCustomers();
+
+        // Assert
+        assertEquals(1, result.size());
+        CustomerDto dto = result.get(0);
+        assertEquals("Alice", dto.getFirstName());
+        assertEquals("1234567890", dto.getPhones().get(0).getNumber());
+        assertEquals("Springfield", dto.getAddresses().get(0).getCity());
+        verify(customerRepository).findAll();
+    }
 
     @Test
     void shouldCreateCustomerWithPhonesAndAddresses() {
@@ -54,4 +97,5 @@ public class CustomerServiceImplTest {
         assertEquals("WORK", saved.getAddresses().get(0).getType());
         verify(customerRepository).save(any(Customer.class));
     }
+
 }
