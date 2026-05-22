@@ -1,7 +1,5 @@
 package com.cloudcuisine.customerservice.dto.customer;
 
-import com.cloudcuisine.customerservice.model.customer.Address;
-import com.cloudcuisine.customerservice.model.customer.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,4 +32,5 @@ public class CustomerDto {
 
     private String refreshToken;    // Optional: store refresh token
     private LocalDateTime lastLogin;// Track last login time
+
 }
