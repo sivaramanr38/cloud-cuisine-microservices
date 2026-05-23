@@ -40,4 +40,10 @@ public class CustomerController {
         CustomerDto savedCustomer = customerService.createCustomer(customerDto);
         return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable long id) {
+        CustomerDto customerDto = customerService.getCustomerById(id);
+        return ResponseEntity.ok(customerDto);
+    }
 }
