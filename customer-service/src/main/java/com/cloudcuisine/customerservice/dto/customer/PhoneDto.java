@@ -1,16 +1,38 @@
 package com.cloudcuisine.customerservice.dto.customer;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class PhoneDto {
     private Long id;
     private String type;     // MOBILE / HOME / WORK
     private String number;
+
+    public PhoneDto(Long id, String type, String number) {
+        this.id = id;
+        this.type = type;
+        this.number = number;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 }

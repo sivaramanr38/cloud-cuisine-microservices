@@ -1,6 +1,7 @@
 package com.cloudcuisine.customerservice.controller;
 
 import com.cloudcuisine.customerservice.dto.customer.CustomerDto;
+import com.cloudcuisine.customerservice.exception.CustomerNotFoundException;
 import com.cloudcuisine.customerservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +43,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable long id) {
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable long id) throws CustomerNotFoundException {
         CustomerDto customerDto = customerService.getCustomerById(id);
         return ResponseEntity.ok(customerDto);
     }

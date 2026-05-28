@@ -1,6 +1,7 @@
 package com.cloudcuisine.customerservice.service;
 
 import com.cloudcuisine.customerservice.dto.customer.CustomerDto;
+import com.cloudcuisine.customerservice.exception.CustomerNotFoundException;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ public interface CustomerService {
 
     CustomerDto createCustomer(CustomerDto customerDto);
 
-    CustomerDto getCustomerById(long id);
+    CustomerDto getCustomerById(long id) throws CustomerNotFoundException;
 }

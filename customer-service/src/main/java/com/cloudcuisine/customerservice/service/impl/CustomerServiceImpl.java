@@ -1,15 +1,14 @@
 package com.cloudcuisine.customerservice.service.impl;
 
 import com.cloudcuisine.customerservice.dto.customer.CustomerDto;
+import com.cloudcuisine.customerservice.exception.CustomerNotFoundException;
 import com.cloudcuisine.customerservice.mapper.CustomerMapper;
 import com.cloudcuisine.customerservice.model.customer.Customer;
 import com.cloudcuisine.customerservice.repository.CustomerRepository;
 import com.cloudcuisine.customerservice.service.CustomerService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 //@AllArgsConstructor
@@ -37,9 +36,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto getCustomerById(long id) {
-        Customer customer = customerRepository.getReferenceById(id);
-        return CustomerMapper.mapToDto(customer);
+    public CustomerDto getCustomerById(long id) throws CustomerNotFoundException {
+        return customerRepository.findById(id)
+                .map(CustomerMapper::mapToDto)
+                .orElseThrow(() ->new CustomerNotFoundException("Customer with ID " + id + " not found"));
     }
 
 }
