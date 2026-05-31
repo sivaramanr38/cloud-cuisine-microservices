@@ -1,11 +1,25 @@
 package com.cloudcuisine.customerservice.dto.customer;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class AddressDto {
+
     private Long id;
+
+    @NotBlank(message = "Street cannot be blank")
     private String street;
+
+    @NotBlank(message = "City cannot be blank")
     private String city;
+
+    @Pattern(regexp = "\\d{6}", message = "Postal code must be 6 digits")
     private String postalCode;
+
+    @NotBlank(message = "Country cannot be blank")
     private String country;
+
+    @NotBlank(message = "Type is required")
     private String type;       // HOME / WORK
 
     public AddressDto(Long id, String street, String city, String postalCode, String country, String type) {
@@ -18,6 +32,10 @@ public class AddressDto {
     }
 
     public AddressDto(long l, String s, String metropolis, String number, String usa, String work) {
+    }
+
+    public AddressDto() {
+
     }
 
     public Long getId() {

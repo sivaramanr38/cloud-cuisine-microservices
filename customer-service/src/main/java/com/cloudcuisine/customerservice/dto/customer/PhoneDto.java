@@ -1,9 +1,16 @@
 package com.cloudcuisine.customerservice.dto.customer;
 
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class PhoneDto {
     private Long id;
+
+    @NotBlank(message = "Phone must no be blank")
     private String type;     // MOBILE / HOME / WORK
+
+    @Pattern(regexp = "//d{10}", message = "Phone must be of 10 digits")
     private String number;
 
     public PhoneDto(Long id, String type, String number) {
